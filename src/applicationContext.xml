@@ -33,7 +33,7 @@
         </property>
     </bean>
     
-    <!--After Returing Advice -->
+    <!--Around Advice -->
     <bean id="obj_C" class="AroundAdvice.C"></bean>
     <bean id="around" class="AroundAdvice.AroundAdvisor"></bean>
     
@@ -42,6 +42,19 @@
         <property name="interceptorNames">
             <list>
                 <value>around</value>
+            </list>
+        </property>
+    </bean>
+    
+    <!--Throws Advice -->
+    <bean id="obj_V" class="ThrowsAdvice.Validator"></bean>
+    <bean id="ta" class="ThrowsAdvice.ThrowsAdvisor"></bean>
+    
+    <bean id="proxy3" class="org.springframework.aop.framework.ProxyFactoryBean">
+        <property name="target" ref="obj_V"></property>
+        <property name="interceptorNames">
+            <list>
+                <value>ta</value>
             </list>
         </property>
     </bean>
